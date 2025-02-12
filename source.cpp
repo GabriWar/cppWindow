@@ -37,10 +37,19 @@ void asynckey()
 //codigo de renderizacao da janela
 void renderwindow(int offsetup, int offsetdown, bool alt)
 {
+		int WcollumnsOld = 0;
+		int WrowsOld = 0;
 	while (true)
+	
 	{
-		int Wcollumns = winsize().Wcollumns; int Wrows = winsize().Wrows;
-
+		int Wcollumns = winsize().Wcollumns; 
+		int Wrows = winsize().Wrows;		
+		
+	if ((Wrows != WrowsOld) || (Wcollumns != WcollumnsOld)){
+		 WcollumnsOld = winsize().Wcollumns; 
+		 WrowsOld = winsize().Wrows;
+		 	
+				system("cls");
 		if (alt) {
 			for (int i = 0; i <= offsetup; i++) {
 				std::cout << "\n";
@@ -75,8 +84,8 @@ void renderwindow(int offsetup, int offsetdown, bool alt)
 		}
 		std::cout << std::string(Wcollumns, '*') << std::endl;
 		std::cout << " rows= " << Wrows << " columns =" << Wcollumns << "\n";
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
-		system("cls");
 
+
+}
 	}
 }
